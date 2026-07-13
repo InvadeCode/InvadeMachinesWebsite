@@ -301,11 +301,11 @@ function PageHero({
   };
 
   return (
-    <section className="page-hero sticky top-0 isolate h-[100svh] min-h-[100svh] w-full overflow-hidden bg-black text-white">
-      <div className="absolute inset-0 bg-black" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_25%,rgba(255,255,255,0.10),transparent_30%)]" />
-      <div className="hero-orb absolute -right-24 top-24 hidden h-[520px] w-[520px] rounded-full border border-white/15 opacity-60 sm:block" />
-      <div className="absolute right-24 bottom-20 hidden h-32 w-32 rotate-12 rounded-3xl border border-amber-300/25 lg:block" />
+    <section className="page-hero sticky top-0 isolate h-[100svh] min-h-[100svh] w-full overflow-hidden bg-neutral-50 text-emerald-950">
+      <div className="absolute inset-0 bg-neutral-50" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_25%,rgba(0,0,0,0.02),transparent_30%)]" />
+      <div className="hero-orb absolute -right-24 top-24 hidden h-[520px] w-[520px] rounded-full border border-emerald-950/10 opacity-60 sm:block" />
+      <div className="absolute right-24 bottom-20 hidden h-32 w-32 rotate-12 rounded-3xl border border-amber-500/20 lg:block" />
 
       <img
         src={image}
@@ -313,7 +313,7 @@ function PageHero({
         fetchpriority="high"
         loading="eager"
         decoding="async"
-        className="absolute inset-0 h-full w-full object-cover object-center opacity-95 saturate-110 brightness-125"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-45 saturate-110"
         alt=""
         aria-hidden="true"
       />
@@ -332,27 +332,27 @@ function PageHero({
           onPlaying={() => setVideoReady(true)}
           onLoadedMetadata={() => setVideoReady(true)}
           onError={() => setVideoFailed(true)}
-          className={`absolute inset-0 h-full w-full object-cover object-center saturate-110 brightness-125 transition-opacity duration-700 ${videoReady ? 'opacity-95' : 'opacity-0'}`}
+          className={`absolute inset-0 h-full w-full object-cover object-center saturate-110 opacity-45 transition-opacity duration-700 ${videoReady ? 'opacity-45' : 'opacity-0'}`}
         >
           <source src={video} type="video/mp4" />
         </video>
       )}
 
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/80 via-black/50 to-black/10" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/70 via-black/5 to-black/20" />
-      <div className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_78%_42%,rgba(251,191,36,0.28),transparent_35%)] opacity-50" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-white/90 via-white/55 to-transparent" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-neutral-50/50 via-transparent to-transparent" />
+      <div className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_78%_42%,rgba(251,191,36,0.18),transparent_35%)] opacity-30" />
 
       <div className="hero-content-scroll relative z-10 flex h-full flex-col px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28 md:pb-24 md:pt-32 lg:px-[3%] lg:pb-20 xl:pb-24">
         <div className="hero-copy mt-auto mx-auto w-full site-shell max-w-[1440px] reveal-on-scroll visible">
-          <p className="hero-eyebrow mb-4 text-[9px] font-bold uppercase tracking-[0.19em] text-amber-400 sm:tracking-[0.22em] md:mb-6 md:text-[11px] md:tracking-[0.24em]">
+          <p className="hero-eyebrow mb-4 text-[9px] font-bold uppercase tracking-[0.19em] text-amber-600 sm:tracking-[0.22em] md:mb-6 md:text-[11px] md:tracking-[0.24em]">
             {eyebrow}
           </p>
-          <H1 className="hero-title mb-5 max-w-[1280px] font-light uppercase leading-[1.06] tracking-tighter text-white md:mb-8">
+          <H1 className="hero-title mb-5 max-w-[1280px] font-light uppercase leading-[1.06] tracking-tighter text-emerald-950 md:mb-8">
             {title}<br />
-            <span className="font-medium text-amber-400">{accent}</span>
+            <span className="font-medium text-amber-600">{accent}</span>
           </H1>
-          <div className="hero-description-wrap ml-0 max-w-4xl border-l-2 border-amber-400 pl-4 sm:ml-1 sm:pl-5 md:pl-6">
-            <div className="hero-description text-[14px] font-light leading-relaxed text-emerald-50/90 md:text-[17px]">
+          <div className="hero-description-wrap ml-0 max-w-4xl border-l-2 border-amber-500 pl-4 sm:ml-1 sm:pl-5 md:pl-6">
+            <div className="hero-description text-[14px] font-light leading-relaxed text-emerald-900/80 md:text-[17px]">
               {description}
             </div>
           </div>
@@ -360,7 +360,7 @@ function PageHero({
         </div>
       </div>
 
-      <ChevronDown size={28} className="page-hero-chevron absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 animate-bounce text-amber-400 sm:block md:bottom-7" aria-hidden="true" />
+      <ChevronDown size={28} className="page-hero-chevron absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 animate-bounce text-amber-600 sm:block md:bottom-7" aria-hidden="true" />
     </section>
   );
 }
@@ -877,13 +877,14 @@ export default function App() {
       }
       .hero-title {
         max-width: 18ch;
-        font-size: clamp(3.1rem, 7vw, 7.5rem);
+        font-size: clamp(2.6rem, 5.5vw, 5rem);
         line-height: 1.06;
         text-wrap: balance;
       }
       .hero-description { max-width: 78ch; }
       .hero-actions > * { max-width: 100%; }
       .project-strip,
+      .grid-4-cols,
       .horizontal-card-scroll {
         scrollbar-width: thin;
         scrollbar-color: rgba(251, 191, 36, .65) transparent;
@@ -896,6 +897,7 @@ export default function App() {
       }
       .project-strip::-webkit-scrollbar { display: none; }
       .project-strip > * { scroll-snap-align: start; }
+      .grid-4-cols,
       .horizontal-card-scroll {
         display: grid;
         grid-auto-flow: column;
@@ -910,6 +912,7 @@ export default function App() {
         scroll-padding-inline: .15rem;
         padding: .25rem .15rem 1.35rem;
       }
+      .grid-4-cols > *,
       .horizontal-card-scroll > * {
         min-width: 0;
         scroll-snap-align: start;
@@ -939,6 +942,7 @@ export default function App() {
         .hero-description-wrap { max-width: 100%; }
         .hero-actions { width: 100%; }
         .hero-actions button, .hero-actions a { min-height: 46px; }
+        .grid-4-cols,
         .horizontal-card-scroll {
           grid-auto-columns: calc(100vw - 2.25rem);
           gap: .9rem;
@@ -951,27 +955,36 @@ export default function App() {
       }
       @media (min-width: 480px) and (max-width: 767px) {
         .hero-title { max-width: 17ch; font-size: clamp(3.25rem, 9.8vw, 4.8rem); }
+        .grid-4-cols,
         .horizontal-card-scroll { grid-auto-columns: minmax(0, min(76vw, 360px)); }
       }
       @media (min-width: 768px) and (max-width: 1023px) {
         .hero-title { max-width: 18ch; font-size: clamp(4.25rem, 8.2vw, 6.25rem); }
+        .grid-4-cols,
         .horizontal-card-scroll { grid-auto-columns: minmax(320px, 44vw); }
       }
-      @media (min-width: 1024px) and (max-width: 1439px) {
-        .horizontal-card-scroll { grid-auto-columns: minmax(320px, 31vw); }
-      }
-      @media (min-width: 1440px) {
-        .horizontal-card-scroll { grid-auto-columns: minmax(340px, 380px); }
+      @media (min-width: 1024px) {
+        .grid-4-cols {
+          grid-auto-flow: row;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          overflow-x: visible;
+          padding-bottom: 0.5rem;
+        }
+        .grid-4-cols > * {
+          padding: 1.5rem !important;
+        }
+        .horizontal-card-scroll {
+          grid-auto-columns: minmax(320px, 31vw);
+        }
       }
       @media (min-width: 1600px) {
         .site-shell { max-width: 1560px !important; }
-        .hero-title { font-size: clamp(6.25rem, 6.2vw, 7.75rem); }
+        .hero-title { font-size: clamp(4.2rem, 4.8vw, 5.5rem); }
       }
       @media (min-width: 1920px) {
         .site-shell { max-width: 1740px !important; }
-        .hero-title { font-size: clamp(6.8rem, 6vw, 8.4rem); }
+        .hero-title { font-size: clamp(4.8rem, 4.5vw, 6rem); }
         .hero-description { font-size: 18px; }
-        .horizontal-card-scroll { grid-auto-columns: minmax(370px, 410px); }
       }
       @media (min-width: 2400px) {
         .site-shell { max-width: 1920px !important; }
@@ -1152,10 +1165,10 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className={`site-nav fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-4 sm:px-6 lg:px-[3%] ${
+      <nav className={`site-nav fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-4 sm:px-6 lg:px-[3%] text-emerald-950 ${
         isScrolled 
-        ? 'bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] py-3 text-emerald-950 mx-[2%] mt-4 rounded-xl' 
-        : 'bg-transparent border-transparent py-4 text-white rounded-none'
+        ? 'bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border-b border-black/5 shadow-sm py-3' 
+        : 'bg-transparent border-transparent py-4'
       }`}>
         <div className="site-shell max-w-[1440px] mx-auto flex justify-between items-center w-full">
           <button onClick={() => setCurrentPage('home')} className="flex-shrink-0 cursor-pointer flex items-center h-[70px] md:h-[82px] drop-shadow-md hover:scale-105 transition-transform duration-300">
@@ -1176,14 +1189,12 @@ export default function App() {
                       item.parentOnly ? 'cursor-default' : 'cursor-pointer'
                     } ${
                       isActive 
-                        ? (isScrolled ? 'text-amber-600 font-bold' : 'text-amber-400') 
-                        : (isScrolled ? 'text-emerald-950 hover:text-amber-500' : 'text-emerald-50 hover:text-white')
+                        ? 'text-amber-600 font-bold' 
+                        : 'text-emerald-950 hover:text-amber-600'
                     }`}
                   >
                     {isActive && (
-                      <span className={`w-1.5 h-1.5 rounded-sm flex-shrink-0 ${
-                        isScrolled ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]' : 'bg-amber-400 shadow-[0_0_8px_#fbbf24]'
-                      }`}></span>
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></span>
                     )}
                     <span>{item.label}</span>
                     {item.dropdown && <ChevronDown size={14} strokeWidth={2} className="opacity-70" />}
@@ -1191,18 +1202,12 @@ export default function App() {
                   
                   {/* Dropdown Menu */}
                   {item.dropdown && (
-                    <div className={`absolute top-[100%] left-1/2 -translate-x-1/2 w-64 shadow-2xl rounded-xl opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 overflow-hidden flex flex-col p-2 ${
-                      isScrolled ? 'bg-white border border-emerald-100' : 'bg-black border border-emerald-800/50'
-                    }`}>
+                    <div className="absolute top-[100%] left-1/2 -translate-x-1/2 w-64 shadow-2xl rounded-xl opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 overflow-hidden flex flex-col p-2 bg-white border border-emerald-100">
                       {item.dropdown.map(subItem => (
                         <button 
                           key={subItem.label} 
                           onClick={() => setCurrentPage(subItem.id)}
-                          className={`text-left px-5 py-3.5 text-[11px] rounded-xl transition-colors tracking-widest uppercase font-semibold ${
-                            isScrolled 
-                              ? 'text-emerald-950 hover:bg-emerald-50 hover:text-amber-500' 
-                              : 'text-emerald-100 hover:bg-emerald-900 hover:text-amber-400'
-                          }`}
+                          className="text-left px-5 py-3.5 text-[11px] rounded-xl transition-colors tracking-widest uppercase font-semibold text-emerald-950 hover:bg-emerald-50 hover:text-amber-600"
                         >
                           {subItem.label}
                         </button>
@@ -1218,7 +1223,7 @@ export default function App() {
             <button onClick={() => setCurrentPage('contact')} className={`hidden lg:flex items-center gap-2 px-6 py-2.5 text-[11px] font-bold tracking-widest uppercase rounded-xl transition-all duration-500 ${
               isScrolled 
               ? 'bg-amber-500 text-emerald-950 hover:bg-emerald-950 hover:text-white shadow-xl shadow-amber-500/20' 
-              : 'bg-amber-500 text-emerald-950 border border-transparent hover:bg-white hover:border-white hover:text-emerald-950'
+              : 'bg-amber-500 text-emerald-950 border border-transparent hover:bg-emerald-950 hover:text-white'
             }`}>
               GET IN TOUCH <ArrowRight size={14} />
             </button>
@@ -1342,18 +1347,18 @@ function HomeContent({ setPage, currentPage }) {
         accent="ACROSS INDUSTRIES."
         description={(
           <>
-            <span className="block font-medium text-white">Current engineering projects include Coffee Processing, Sparkling Water, Olive Oil Processing, and Silo &amp; Storage Systems.</span>
-            <span className="mt-2 block">Invade Machines Limited is a horizontal engineering company that designs, integrates, and delivers application-specific machinery, automation, inspection, imaging, process systems, and research solutions across industrial and scientific environments.</span>
+            <span className="block font-medium text-emerald-950">Current engineering projects include Coffee Processing, Sparkling Water, Olive Oil Processing, and Silo &amp; Storage Systems.</span>
+            <span className="mt-2 block text-emerald-900/80">Invade Machines Limited is a horizontal engineering company that designs, integrates, and delivers application-specific machinery, automation, inspection, imaging, process systems, and research solutions across industrial and scientific environments.</span>
           </>
         )}
         image={IMAGES.homeHero}
         alt="Integrated industrial machinery, automation, and process engineering systems"
         actions={(
           <div className="flex flex-col sm:flex-row items-start gap-5">
-            <button onClick={() => setPage('products-overview')} className="w-full sm:w-auto bg-amber-500 text-emerald-950 px-9 py-4 text-[11px] font-bold tracking-[0.2em] uppercase rounded-xl hover:bg-white transition-all shadow-xl shadow-amber-500/20">
+            <button onClick={() => setPage('products-overview')} className="w-full sm:w-auto bg-amber-500 text-emerald-950 px-9 py-4 text-[11px] font-bold tracking-[0.2em] uppercase rounded-xl hover:bg-emerald-950 hover:text-white transition-all shadow-xl shadow-amber-500/20">
               Explore Portfolio
             </button>
-            <button onClick={() => setPage('about')} className="group flex items-center justify-center gap-3 w-full sm:w-auto px-3 py-4 text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-amber-300 transition-all">
+            <button onClick={() => setPage('about')} className="group flex items-center justify-center gap-3 w-full sm:w-auto px-3 py-4 text-[11px] font-bold tracking-[0.2em] uppercase text-emerald-950 hover:text-amber-600 transition-all">
               Our Vision
               <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
             </button>
@@ -1437,11 +1442,12 @@ function HomeContent({ setPage, currentPage }) {
               </H2>
             </div>
 
-            <div className="horizontal-card-scroll items-stretch">
+            <div className="grid-4-cols items-stretch">
               {[
                 { icon: Settings, color: 'text-rose-500', bg: 'bg-rose-50', title: 'Industrial Automation & Process Machines', solution: 'Special purpose machines, robotic handling, packing, sealing, and production-line systems engineered around the application.', img: IMAGES.manufacturing, route: 'industrial-automation' },
                 { icon: Binary, color: 'text-blue-500', bg: 'bg-blue-50', title: 'Inspection, OCR/OCV & Traceability', solution: 'High-speed inspection for washers, syringes, bottles, labels, print, codes, dimensions, and automotive components.', img: IMAGES.machineVision, route: 'machine-vision' },
-                { icon: Focus, color: 'text-emerald-500', bg: 'bg-emerald-50', title: 'Research, Microscopy & Agro Science', solution: 'Solutions spanning biomedical devices, pharma APIs, oil exploration, virology, defence, space, institutional, and crop research.', img: IMAGES.inspectionLabs, route: 'applications' }
+                { icon: Microscope, color: 'text-emerald-500', bg: 'bg-emerald-50', title: 'Research, Microscopy & Agro Science', solution: 'Solutions spanning biomedical devices, pharma APIs, oil exploration, virology, defence, space, institutional, and crop research.', img: IMAGES.inspectionLabs, route: 'applications' },
+                { icon: Camera, color: 'text-amber-500', bg: 'bg-amber-50', title: 'Digital Imaging & Scientific Cameras', solution: 'High-performance cooled cameras, high-resolution sensors, sensor alignments, and custom spectroscopy camera systems.', img: IMAGES.digitalCameras, route: 'cameras' }
               ].map((item, i) => (
                 <div key={i} className="group bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 hover:shadow-xl transition-all duration-500 flex flex-col h-full">
                   <div className="h-[200px] lg:h-[220px] sm:h-[260px] overflow-hidden relative flex-shrink-0">
@@ -1494,12 +1500,13 @@ function HomeContent({ setPage, currentPage }) {
               </H2>
             </div>
             
-            <div className="horizontal-card-scroll methodology-card-scroll relative">
+            <div className="grid-4-cols methodology-card-scroll relative">
               
               {[
                 { step: "01", icon: Lightbulb, title: "Discovery & Analysis", text: "We assess your production line speeds, lighting constraints, and precise defect criteria to formulate a bespoke visual architecture." },
-                { step: "02", icon: Cpu, title: "Hardware Orchestration", text: "Selecting the exact lenses, high-speed cameras, and polarized lights required to capture perfect data points at extreme velocities." },
-                { step: "03", icon: ShieldCheck, title: "Deployment & Support", text: "PLC integration, software calibration, documented handover, and a defined support path to improve maintainability and reduce avoidable downtime." }
+                { step: "02", icon: Cpu, title: "Hardware Orchestration", text: "Selecting the exact lenses, high-speed cameras, sensor formats, and polarized lights required to capture perfect data points." },
+                { step: "03", icon: Binary, title: "Software & Calibration", text: "Vision recipe programming, algorithm calibration, PLC logic synchronization, and testing reject mechanism triggers." },
+                { step: "04", icon: ShieldCheck, title: "Deployment & Validation", text: "Site installation, documented validation support (IQ/OQ), operator training, and preventive-maintenance path setup." }
               ].map((item, i) => (
                 <div key={i} className="bg-white border border-black/5 rounded-xl p-6 sm:p-8 lg:p-10 relative z-10 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">
                   <div className="absolute -top-4 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap bg-amber-500 text-emerald-950 text-[10px] leading-none tracking-[0.18em] font-black px-5 py-2 rounded-md shadow-md">STEP {item.step}</div>
@@ -1570,7 +1577,7 @@ function HomeContent({ setPage, currentPage }) {
                 PROVEN IN <span className="font-medium text-emerald-700">THE FIELD.</span>
               </H2>
             </div>
-            <div className="horizontal-card-scroll">
+            <div className="grid-4-cols">
               <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-xl border border-black/5 shadow-sm relative">
                 <span className="absolute top-6 right-8 text-6xl text-emerald-50 font-serif leading-none">"</span>
                 <p className="text-black/60 italic text-[15px] font-light leading-relaxed mb-8 relative z-10">
@@ -1598,6 +1605,36 @@ function HomeContent({ setPage, currentPage }) {
                   <div>
                     <H4 className="font-medium text-emerald-950">Research Challenge</H4>
                     <p className="text-[11px] text-emerald-600 font-bold uppercase tracking-widest">Materials · Imaging · Measurement</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-xl border border-black/5 shadow-sm relative">
+                <span className="absolute top-6 right-8 text-6xl text-emerald-50 font-serif leading-none">"</span>
+                <p className="text-black/60 italic text-[15px] font-light leading-relaxed mb-8 relative z-10">
+                  Automation systems need synchronized robotic controllers, programmable logic controllers (PLCs), stable component feed rates, and fail-safe safety barriers to operate continuously. A custom assembly or packaging machine succeeds only when standard components are selected for their real duty cycle.
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center font-medium text-emerald-700">
+                    AM
+                  </div>
+                  <div>
+                    <H4 className="font-medium text-emerald-950">Automation Challenge</H4>
+                    <p className="text-[11px] text-emerald-600 font-bold uppercase tracking-widest">Robotics · Controls · Machinery</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-xl border border-black/5 shadow-sm relative">
+                <span className="absolute top-6 right-8 text-6xl text-emerald-50 font-serif leading-none">"</span>
+                <p className="text-black/60 italic text-[15px] font-light leading-relaxed mb-8 relative z-10">
+                  Scientific and cooled cameras require careful sensor alignment, low-noise electronics, precise pixel dimensions, and matching spectral illumination. A diagnostic or laboratory imaging setup works only when the lens field of view and sensor speed are engineered as one.
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center font-medium text-emerald-700">
+                    DI
+                  </div>
+                  <div>
+                    <H4 className="font-medium text-emerald-950">Imaging Challenge</H4>
+                    <p className="text-[11px] text-emerald-600 font-bold uppercase tracking-widest">Sensors · Lenses · Spectroscopy</p>
                   </div>
                 </div>
               </div>
@@ -1838,15 +1875,6 @@ function BoardMembersContent({ setPage, currentPage }) {
       name: "Vishwas Datir",
       title: null,
       inkedin: null 
-    },
-    { 
-      name: "Sudhakar Rathod",      
-      title: null,
-      inkedin: null 
-    },
-    { name: "Kaushik Lade",
-      title: null,
-      inkedin: null  
     }
   ];
 
