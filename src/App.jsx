@@ -1167,8 +1167,8 @@ export default function App() {
       {/* Navigation */}
       <nav className={`site-nav fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-4 sm:px-6 lg:px-[3%] text-emerald-950 ${
         isScrolled 
-        ? 'bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border-b border-black/5 shadow-sm py-3' 
-        : 'bg-transparent border-transparent py-4'
+        ? 'bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] py-3 mx-[2%] mt-4 rounded-xl' 
+        : 'bg-transparent border-transparent py-4 rounded-none'
       }`}>
         <div className="site-shell max-w-[1440px] mx-auto flex justify-between items-center w-full">
           <button onClick={() => setCurrentPage('home')} className="flex-shrink-0 cursor-pointer flex items-center h-[70px] md:h-[82px] drop-shadow-md hover:scale-105 transition-transform duration-300">
