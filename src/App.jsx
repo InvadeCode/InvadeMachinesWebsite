@@ -15,6 +15,44 @@ import digitalImagingSolution from './images/digital_imaging_solution.png';
 // ---------------------------------------------------------
 // TITLE CASE CONVERSION UTILITIES & COMPONENTS
 // ---------------------------------------------------------
+const ACRONYM_MAP = {
+  it: 'IT',
+  fmcg: 'FMCG',
+  spm: 'SPM',
+  spms: 'SPMs',
+  api: 'API',
+  apis: 'APIs',
+  cfr: 'CFR',
+  rtk: 'RTK',
+  gis: 'GIS',
+  qc: 'QC',
+  iit: 'IIT',
+  iits: 'IITs',
+  ocr: 'OCR',
+  ocv: 'OCV',
+  plc: 'PLC',
+  scada: 'SCADA',
+  cmm: 'CMM',
+  drv: 'DRV',
+  tvm: 'TVM',
+  uav: 'UAV',
+  ev: 'EV',
+  pv: 'PV',
+  nir: 'NIR',
+  pcb: 'PCB',
+  ivf: 'IVF',
+  icsi: 'ICSI',
+  imsi: 'IMSI',
+  pol: 'POL',
+  led: 'LED',
+  fat: 'FAT',
+  sat: 'SAT',
+  faq: 'FAQ',
+  faqs: 'FAQs',
+  cta: 'CTA',
+  hq: 'HQ'
+};
+
 const toTitleCase = (text) => {
   if (typeof text !== 'string') return text;
   return text
@@ -22,6 +60,10 @@ const toTitleCase = (text) => {
     .map(word => {
       if (!word) return '';
       return word.replace(/\b[a-zA-Z]+\b/g, (match) => {
+        const lowerMatch = match.toLowerCase();
+        if (Object.prototype.hasOwnProperty.call(ACRONYM_MAP, lowerMatch)) {
+          return ACRONYM_MAP[lowerMatch];
+        }
         return match.charAt(0).toUpperCase() + match.slice(1).toLowerCase();
       });
     })
@@ -1107,7 +1149,7 @@ export default function App() {
       dropdown: [
         { label: 'All Applications', id: 'applications' },
         { label: 'Drone Technology', id: 'drone-technology' },
-        { label: 'Automotives', id: 'automotives' },
+        { label: 'Automotive', id: 'automotive' },
         { label: 'Green Energy', id: 'green-energy' }
       ]
     },
@@ -1254,7 +1296,7 @@ export default function App() {
         {currentPage === 'machine-vision' && <MachineVisionContent setPage={setCurrentPage} currentPage={currentPage} />}
         {currentPage === 'applications' && <ApplicationsContent setPage={setCurrentPage} currentPage={currentPage} />}
         {currentPage === 'drone-technology' && <DroneTechnologyContent setPage={setCurrentPage} currentPage={currentPage} />}
-        {currentPage === 'automotives' && <AutomotivesContent setPage={setCurrentPage} currentPage={currentPage} />}
+        {currentPage === 'automotive' && <AutomotiveContent setPage={setCurrentPage} currentPage={currentPage} />}
         {currentPage === 'green-energy' && <GreenEnergyContent setPage={setCurrentPage} currentPage={currentPage} />}
         {currentPage === 'clients' && <ClientsContent setPage={setCurrentPage} currentPage={currentPage} />}
         {currentPage === 'investors' && <InvestorsContent setPage={setCurrentPage} currentPage={currentPage} />}
@@ -1535,7 +1577,7 @@ function HomeContent({ setPage, currentPage }) {
                 </p>
                 <ul className="space-y-4">
                   {[
-                    "Preventative Maintenance & Deep Cleaning",
+                    "Preventive Maintenance & Deep Cleaning",
                     "Optical Calibration & Alignment",
                     "Software Updates & 21 CFR Part 11 Validation Support",
                     "On-call Emergency Technical Support"
@@ -3026,7 +3068,7 @@ function ContactContent({ setPage, currentPage }) {
 
     setFormStatus({
       type: 'loading',
-      message: 'Sending your inquiry…'
+      message: 'Sending your enquiry…'
     });
 
     try {
@@ -3053,14 +3095,14 @@ function ContactContent({ setPage, currentPage }) {
       if (!response.ok) {
         throw new Error(
           result.message ||
-          'We could not send your inquiry. Please try again or email info@invademachines.com.'
+          'We could not send your enquiry. Please try again or email info@invademachines.com.'
         );
       }
 
       form.reset();
       setFormStatus({
         type: 'success',
-        message: result.message || 'Thank you. Your inquiry has been sent successfully.'
+        message: result.message || 'Thank you. Your enquiry has been sent successfully.'
       });
     } catch (error) {
       console.error('Contact form submission failed:', error);
@@ -3090,7 +3132,7 @@ function ContactContent({ setPage, currentPage }) {
             <div className="flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-24 items-start">
               
               <div className="lg:w-[50%] w-full">
-                <H3 className="text-3xl font-light uppercase tracking-widest text-emerald-900 mb-10">Send a Direct Inquiry</H3>
+                <H3 className="text-3xl font-light uppercase tracking-widest text-emerald-900 mb-10">Send a Direct Enquiry</H3>
                 <form className="relative space-y-8 w-full" onSubmit={handleContactSubmit} noValidate>
                    {/* Honeypot field: hidden from people, commonly completed by bots. */}
                    <div aria-hidden="true" className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden">
@@ -3329,15 +3371,15 @@ function DroneTechnologyContent({ setPage, currentPage }) {
 }
 
 // ---------------------------------------------------------
-// 14. AUTOMOTIVES PAGE
+// 14. AUTOMOTIVE PAGE
 // ---------------------------------------------------------
-function AutomotivesContent({ setPage, currentPage }) {
+function AutomotiveContent({ setPage, currentPage }) {
   usePageScroll(currentPage);
   return (
     <>
       <PageHero
         eyebrow="Applications"
-        title="AUTOMOTIVES"
+        title="AUTOMOTIVE"
         accent="PRECISION QUALITY CONTROL."
         description="Automated inline quality control, robotic assembly inspection, 3D laser profiling, and non-contact sub-millimeter measurement systems for modern automotive manufacturing."
         image={IMAGES.automotiveHero}

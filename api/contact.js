@@ -82,12 +82,12 @@ export default async function handler(request, response) {
 
       replyTo: cleanEmail,
 
-      subject: `Website inquiry: ${cleanRequirement}`,
+      subject: `Website enquiry: ${cleanRequirement}`,
 
       html: `
         <div style="font-family:Arial,sans-serif;line-height:1.6;color:#12372f;max-width:680px;margin:auto;">
           <h2 style="margin-bottom:24px;">
-            New Invade Machines Website Inquiry
+            New Invade Machines Website Enquiry
           </h2>
 
           <table style="width:100%;border-collapse:collapse;">
@@ -116,7 +116,7 @@ export default async function handler(request, response) {
       `,
 
       text: `
-New Invade Machines Website Inquiry
+New Invade Machines Website Enquiry
 
 Name: ${cleanName}
 Email: ${cleanEmail}
@@ -132,13 +132,13 @@ ${cleanMessage}
 
       return response.status(500).json({
         success: false,
-        message: 'The inquiry could not be sent.',
+        message: 'The enquiry could not be sent.',
       });
     }
 
     return response.status(200).json({
       success: true,
-      message: 'Your inquiry has been sent successfully.',
+      message: 'Your enquiry has been sent successfully.',
       id: data?.id,
     });
   } catch (error) {
