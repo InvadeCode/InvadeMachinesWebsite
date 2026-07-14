@@ -1136,10 +1136,10 @@ export default function App() {
       id: 'products-overview',
       dropdown: [
         { label: 'All Solutions', id: 'products-overview' },
-        { label: 'Industrial Automation & SPMs', id: 'industrial-automation' },
-        { label: 'Machine Vision & Inspection', id: 'machine-vision' },
-        { label: 'Microscopy & Research', id: 'microscopy' },
-        { label: 'Digital Imaging', id: 'cameras' }
+        { label: 'Industrial Automation & SPMs', id: 'industrial-automation', thumbnail: IMAGES.manufacturing },
+        { label: 'Machine Vision & Inspection', id: 'machine-vision', thumbnail: IMAGES.machineVision },
+        { label: 'Microscopy & Research', id: 'microscopy', thumbnail: IMAGES.microscopy },
+        { label: 'Digital Imaging', id: 'cameras', thumbnail: IMAGES.digitalCameras }
       ]
     },
     {
@@ -1148,9 +1148,9 @@ export default function App() {
       parentOnly: true,
       dropdown: [
         { label: 'All Applications', id: 'applications' },
-        { label: 'Drone Technology', id: 'drone-technology' },
-        { label: 'Automotive', id: 'automotive' },
-        { label: 'Green Energy', id: 'green-energy' }
+        { label: 'Drone Technology', id: 'drone-technology', thumbnail: IMAGES.droneHero },
+        { label: 'Automotive', id: 'automotive', thumbnail: IMAGES.automotiveHero },
+        { label: 'Green Energy', id: 'green-energy', thumbnail: IMAGES.greenEnergyHero }
       ]
     },
     { label: 'Clients', id: 'clients' },
@@ -1195,9 +1195,19 @@ export default function App() {
                       setCurrentPage(sub.id);
                       setMobileMenuOpen(false);
                     }} 
-                    className="text-[13px] uppercase tracking-widest hover:text-amber-400 transition-colors text-emerald-100"
+                    className={`text-[13px] uppercase tracking-widest hover:text-amber-400 transition-colors text-emerald-100 ${
+                      sub.thumbnail ? 'flex items-center gap-3 px-6 py-1.5' : ''
+                    }`}
                   >
-                    {sub.label}
+                    {sub.thumbnail && (
+                      <img 
+                        src={sub.thumbnail} 
+                        onError={handleImageError}
+                        className="w-8 h-8 object-cover rounded-lg border border-white/10 flex-shrink-0" 
+                        alt="" 
+                      />
+                    )}
+                    <span>{sub.label}</span>
                   </button>
                 ))}
               </div>
@@ -1244,14 +1254,26 @@ export default function App() {
                   
                   {/* Dropdown Menu */}
                   {item.dropdown && (
-                    <div className="absolute top-[100%] left-1/2 -translate-x-1/2 w-64 shadow-2xl rounded-xl opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 overflow-hidden flex flex-col p-2 bg-white border border-emerald-100">
+                    <div className={`absolute top-[100%] left-1/2 -translate-x-1/2 shadow-2xl rounded-xl opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 overflow-hidden flex flex-col p-2 bg-white border border-emerald-100 ${
+                      item.dropdown.some(sub => sub.thumbnail) ? 'w-80' : 'w-64'
+                    }`}>
                       {item.dropdown.map(subItem => (
                         <button 
                           key={subItem.label} 
                           onClick={() => setCurrentPage(subItem.id)}
-                          className="text-left px-5 py-3.5 text-[11px] rounded-xl transition-colors tracking-widest uppercase font-semibold text-emerald-950 hover:bg-emerald-50 hover:text-amber-600"
+                          className={`text-left px-5 py-3.5 text-[11px] rounded-xl transition-colors tracking-widest uppercase font-semibold text-emerald-950 hover:bg-emerald-50 hover:text-amber-600 ${
+                            subItem.thumbnail ? 'flex items-center gap-3.5 py-2.5 px-3' : ''
+                          }`}
                         >
-                          {subItem.label}
+                          {subItem.thumbnail && (
+                            <img 
+                              src={subItem.thumbnail} 
+                              onError={handleImageError}
+                              className="w-10 h-10 object-cover rounded-lg border border-black/5 flex-shrink-0" 
+                              alt="" 
+                            />
+                          )}
+                          <span className="leading-snug">{subItem.label}</span>
                         </button>
                       ))}
                     </div>
