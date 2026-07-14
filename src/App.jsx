@@ -53,17 +53,38 @@ const ACRONYM_MAP = {
   hq: 'HQ'
 };
 
+const MINOR_WORDS = new Set([
+  'with', 'that', 'for', 'and', 'a', 'an', 'the', 'in', 'on', 'at', 
+  'by', 'of', 'to', 'but', 'or', 'from', 'as', 'into', 'until', 'through'
+]);
+
 const toTitleCase = (text) => {
   if (typeof text !== 'string') return text;
-  return text
-    .split(' ')
-    .map(word => {
+  
+  // Split by whitespace to track word positions
+  const words = text.split(/\s+/);
+  
+  return words
+    .map((word, index) => {
       if (!word) return '';
       return word.replace(/\b[a-zA-Z]+\b/g, (match) => {
         const lowerMatch = match.toLowerCase();
+        
+        // 1. Check acronyms
         if (Object.prototype.hasOwnProperty.call(ACRONYM_MAP, lowerMatch)) {
           return ACRONYM_MAP[lowerMatch];
         }
+        
+        // 2. Check minor words
+        if (MINOR_WORDS.has(lowerMatch)) {
+          // Capitalize if it's the first word of the heading
+          if (index === 0) {
+            return match.charAt(0).toUpperCase() + match.slice(1).toLowerCase();
+          }
+          return lowerMatch;
+        }
+        
+        // 3. Default Capitalization
         return match.charAt(0).toUpperCase() + match.slice(1).toLowerCase();
       });
     })
@@ -321,7 +342,8 @@ function PageHero({
   image,
   video,
   alt,
-  actions
+  actions,
+  inlineAccent = false
 }) {
   const [videoReady, setVideoReady] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
@@ -390,8 +412,13 @@ function PageHero({
             {eyebrow}
           </p>
           <H1 className="hero-title mb-5 max-w-[1280px] font-light uppercase leading-[1.06] tracking-tighter text-emerald-950 md:mb-8">
-            {title}<br />
-            <span className="font-medium text-amber-600">{accent}</span>
+            {title}
+            {accent && (
+              <>
+                {inlineAccent ? ' ' : <br />}
+                <span className="font-medium text-amber-600">{accent}</span>
+              </>
+            )}
           </H1>
           <div className="hero-description-wrap ml-0 max-w-4xl border-l-2 border-amber-500 pl-4 sm:ml-1 sm:pl-5 md:pl-6">
             <div className="hero-description text-[14px] font-light leading-relaxed text-emerald-900/80 md:text-[17px]">
@@ -1948,6 +1975,7 @@ function BoardMembersContent({ setPage, currentPage }) {
         eyebrow="Board Members"
         title="BOARD"
         accent="MEMBERS."
+        inlineAccent={true}
         description="The board and executive leadership of Invade Machines Limited guide company strategy, governance, capital stewardship, investor communication, and long-term engineering growth."
         image={IMAGES.teamHero}
         alt="Board members and executive leadership of Invade Machines Limited"
