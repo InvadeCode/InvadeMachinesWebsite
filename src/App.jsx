@@ -11,6 +11,7 @@ import greenEnergyHero from './images/green_energy_hero.png';
 import machineVisionSolution from './images/machine_vision_solution.png';
 import microscopySolution from './images/microscopy_solution.png';
 import digitalImagingSolution from './images/digital_imaging_solution.png';
+import newMicroscopeImage from './images/New Microscope Image.jpg (1).jpeg';
 
 // ---------------------------------------------------------
 // TITLE CASE CONVERSION UTILITIES & COMPONENTS
@@ -50,7 +51,8 @@ const ACRONYM_MAP = {
   faq: 'FAQ',
   faqs: 'FAQs',
   cta: 'CTA',
-  hq: 'HQ'
+  hq: 'HQ',
+  mrb: 'MRB'
 };
 
 const MINOR_WORDS = new Set([
@@ -67,7 +69,7 @@ const toTitleCase = (text) => {
   return words
     .map((word, index) => {
       if (!word) return '';
-      return word.replace(/\b[a-zA-Z]+\b/g, (match) => {
+      return word.replace(/\b[a-zA-Z']+\b/g, (match) => {
         const lowerMatch = match.toLowerCase();
         
         // 1. Check acronyms
@@ -205,7 +207,7 @@ const IMAGES = {
   ampouleInspection: "https://static.wixstatic.com/media/548938_9d23a25ac2ba4a42823874bd73fc1ca3~mv2.jpg",
   aboutFacility: "https://static.wixstatic.com/media/548938_8af18c6d944047a083bca8943f394118~mv2.jpg",
   aboutQuality: "https://static.wixstatic.com/media/548938_6acc6f879a364f0db5b78ba84b00be06~mv2.jpg",
-  microscopyLab: "https://static.wixstatic.com/media/548938_1634279c5012400e8e5f7ed2ffd62f5c~mv2.jpg",
+  microscopyLab: newMicroscopeImage,
   digitalLabOne: "https://static.wixstatic.com/media/548938_dfee8ba89787438caab09ac156aa59d5~mv2.jpg",
   digitalLabTwo: "https://static.wixstatic.com/media/548938_78f28d500e7d4b95befefd2ec45fbb4f~mv2.jpg",
   cameraSensor: "https://static.wixstatic.com/media/548938_daf2c93817e64cacb0b07cd75624f1b1~mv2.jpg",
@@ -1433,7 +1435,7 @@ function HomeContent({ setPage, currentPage }) {
     <>
       {/* Removed bg-[#0a0a0a] from section to ensure video is the base layer */}
       <PageHero
-        eyebrow="Machines · Automation · Inspection · Imaging · Process Systems · Research"
+        eyebrow="Microscope · Machines · Automation · Inspection · Imaging · Process Systems · Research"
         title="ENGINEERED SYSTEMS"
         accent="ACROSS INDUSTRIES."
         description={(
@@ -1991,8 +1993,8 @@ function BoardMembersContent({ setPage, currentPage }) {
                 <p className="text-[10px] font-bold tracking-[0.2em] text-emerald-700 uppercase">A Message from the CEO</p>
                 <span className="w-12 h-[1px] bg-emerald-500"></span>
               </div>
-              <H2 className="text-3xl md:text-5xl lg:text-[4rem] font-light tracking-tighter text-neutral-900 leading-[1.15] mb-10 sm:mb-12 lg:mb-16 max-w-5xl">
-                “Our focus is to deliver <span className="font-medium text-emerald-800">the right engineered system</span> for each application—whether the requirement is a machine, an inspection line, a process system, or a research solution.”
+              <H2 className="text-3xl md:text-5xl lg:text-[4rem] font-light tracking-tighter text-neutral-900 leading-[1.3] mb-10 sm:mb-12 lg:mb-16 max-w-5xl">
+                “We don't just supply equipment; <span className="font-medium text-emerald-800">we bridge scientific precision with industrial scale</span>—delivering application-specific microscopes, machine vision, robotics, automation, and process systems built for absolute reliability.”
               </H2>
             </div>
 
@@ -2247,8 +2249,8 @@ function MicroscopyContent({ setPage, currentPage }) {
           
           {/* Intro Section */}
           <section className="reveal-on-scroll flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-16 items-center">
-            <div className="lg:w-[50%]">
-              <H2 className="text-3xl md:text-4xl font-bold text-emerald-950 mb-6">LIFE AT <span className="font-light text-emerald-700">SUB-MICRON.</span></H2>
+            <div className="lg:w-[55%]">
+              <H2 className="text-3xl md:text-4xl font-bold text-emerald-950 mb-6">MICRO & MACRO <span className="font-light text-emerald-700">ANALYSIS.</span></H2>
               <p className="text-emerald-800/80 leading-relaxed mb-6">
                 Our microscopy and research division supports applications far beyond routine laboratory observation—from heart stents, industrial filters, and pharmaceutical APIs to virology, oil exploration, defence, space, and crop research.
               </p>
@@ -2256,8 +2258,8 @@ function MicroscopyContent({ setPage, currentPage }) {
                 We configure stereo, compound, inverted, fluorescence, polarized, and digital imaging systems around the sample, method, documentation need, and research workflow.
               </p>
             </div>
-            <div className="lg:w-[50%] w-full h-[280px] sm:h-[350px] rounded-xl overflow-hidden shadow-xl">
-              <img loading="lazy" decoding="async" src={IMAGES.microscopyLab} onError={handleImageError} className="w-full h-full object-cover" alt="Microscopy and life-science laboratory" />
+            <div className="lg:w-[45%] w-full h-[260px] sm:h-[310px] rounded-2xl overflow-hidden shadow-lg bg-white flex items-center justify-center p-4 sm:p-5 border border-black/5">
+              <img loading="lazy" decoding="async" src={IMAGES.microscopyLab} onError={handleImageError} className="max-h-full max-w-full object-contain" alt="Microscopy and life-science laboratory" />
             </div>
           </section>
 
@@ -2273,7 +2275,7 @@ function MicroscopyContent({ setPage, currentPage }) {
             <div className="horizontal-card-scroll mb-12">
                 <div className="bg-white p-8 rounded-xl border border-black/5 shadow-sm hover:shadow-xl transition-all">
                   <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700 border border-black/5 mb-6"><Search size={28}/></div>
-                  <H3 className="text-2xl font-medium text-emerald-950 mb-4">Stereo Microscopes</H3>
+                  <H3 className="text-2xl font-medium text-emerald-950 mb-4">Stereo Microscope</H3>
                   <p className="text-black/60 text-[14px] font-light leading-relaxed mb-6">Offering 3D images with large fields of view and long working distances. Ideal for Zoology, Forensic Science, Mining, and PCB Inspection. Minimal sample preparation required.</p>
                   <ul className="space-y-2 text-[13px] text-black/50 font-light border-t border-black/5 pt-4">
                     <li>• Boom stands & Coarse/Fine columns</li>
@@ -2284,7 +2286,7 @@ function MicroscopyContent({ setPage, currentPage }) {
 
                 <div className="bg-white p-8 rounded-xl border border-black/5 shadow-sm hover:shadow-xl transition-all">
                   <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700 border border-black/5 mb-6"><Microscope size={28}/></div>
-                  <H3 className="text-2xl font-medium text-emerald-950 mb-4">Upright Compound</H3>
+                  <H3 className="text-2xl font-medium text-emerald-950 mb-4">Upright Microscope</H3>
                   <p className="text-black/60 text-[14px] font-light leading-relaxed mb-6">Widely used for Clinical Diagnostics and Material Science. Features Halogen/LED illumination with high-res multi-objective nosepieces.</p>
                   <ul className="space-y-2 text-[13px] text-black/50 font-light border-t border-black/5 pt-4">
                     <li>• Phase Contrast for live cells</li>
@@ -2295,7 +2297,7 @@ function MicroscopyContent({ setPage, currentPage }) {
 
                 <div className="bg-white p-8 rounded-xl border border-black/5 shadow-sm hover:shadow-xl transition-all">
                   <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700 border border-black/5 mb-6"><Beaker size={28}/></div>
-                  <H3 className="text-2xl font-medium text-emerald-950 mb-4">Inverted Setups</H3>
+                  <H3 className="text-2xl font-medium text-emerald-950 mb-4">Inverted Microscope</H3>
                   <p className="text-black/60 text-[14px] font-light leading-relaxed mb-6">Light source above, objectives below. Observe live cells in flasks without disruption or study heavy metallurgical polished samples.</p>
                   <ul className="space-y-2 text-[13px] text-black/50 font-light border-t border-black/5 pt-4">
                     <li>• IVF ICSI & IMSI manipulators</li>
@@ -2344,7 +2346,7 @@ function MicroscopyContent({ setPage, currentPage }) {
 
           {/* Workflow Section */}
           <section className="reveal-on-scroll bg-white p-6 sm:p-8 md:p-14 rounded-xl shadow-sm border border-emerald-100 mt-10 sm:mt-12 lg:mt-16 text-center">
-              <H4 className="text-[11px] font-bold tracking-widest uppercase text-emerald-600 mb-10">Sample Preparation & Analysis Workflow</H4>
+              <H4 className="text-[11px] font-bold tracking-widest uppercase text-emerald-600 mb-10">Sample Preparation to Sample Analysis Workflow</H4>
               <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 font-bold text-sm tracking-wider uppercase">
                   <div className="w-full md:w-auto px-8 py-4 border border-black/5 rounded-xl bg-neutral-50 shadow-sm text-emerald-950">Cutting</div>
                   <ArrowRight className="hidden md:block text-emerald-300"/>
@@ -2375,7 +2377,7 @@ function MicroscopyContent({ setPage, currentPage }) {
 
               <div className="bg-emerald-950 rounded-xl border border-emerald-900 p-8 md:p-10 shadow-xl text-white">
                 <p className="text-[10px] font-bold tracking-widest text-amber-400 uppercase mb-4">Agro Research</p>
-                <H3 className="text-2xl md:text-3xl font-light mb-8">Crop, Material & Protection Research</H3>
+                <H3 className="text-2xl md:text-3xl font-light mb-8">Crop Protection, Crop Improvement & Bio Technology</H3>
                 <ul className="grid sm:grid-cols-2 gap-4">
                   {AGRO_RESEARCH_APPLICATIONS.map((application) => (
                     <li key={application} className="flex items-start gap-3 text-[14px] text-emerald-100/75 leading-relaxed">
@@ -2912,7 +2914,7 @@ function InvestorsContent({ setPage, currentPage }) {
     {
       icon: Activity,
       eyebrow: 'Auditor',
-      title: 'MRB and Associates',
+      title: 'MRB & Associates',
       body: (
         <>
           A-102, 1st Floor, Shraddha Heights<br />
@@ -2957,17 +2959,14 @@ function InvestorsContent({ setPage, currentPage }) {
       <main className="relative z-10 overflow-hidden rounded-t-xl bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.12)]">
         <section className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-[3%] lg:py-[12vh] xl:py-[15vh]">
           <div className="site-shell mx-auto w-full max-w-[1440px]">
-            <div className="reveal-on-scroll grid items-end gap-8 border-b border-black/5 pb-10 lg:grid-cols-12 lg:gap-16 lg:pb-14">
-              <div className="lg:col-span-7">
+            <div className="reveal-on-scroll border-b border-black/5 pb-10 lg:pb-14">
+              <div className="max-w-3xl">
                 <SectionHeading
                   eyebrow="Get in Touch"
-                  title="INVESTOR RELATIONS CONTACT."
+                  title="INVESTOR RELATIONS."
                   description="For investor-related enquiries, corporate information, and regulatory communication, contact the investor-relations team directly."
                 />
               </div>
-              <p className="max-w-xl text-[14px] font-light leading-7 text-black/60 sm:text-[15px] lg:col-span-5 lg:justify-self-end">
-                Our approach is built around timely communication, clear ownership, responsible disclosure, and disciplined corporate governance.
-              </p>
             </div>
 
             <div className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-2">
@@ -3169,8 +3168,8 @@ function ContactContent({ setPage, currentPage }) {
     <>
       <PageHero
         eyebrow="Connect"
-        title="START WITH"
-        accent="THE REQUIREMENT."
+        title="LET US UNDERSTAND"
+        accent="YOUR NEEDS."
         description="Whether you need a special purpose machine, automated inspection line, robotic handling cell, packing system, process project, microscopy setup, or digital imaging solution, our team is ready to define the right architecture."
         image={IMAGES.contactHero}
         alt="Contact Invade Machines Limited"
